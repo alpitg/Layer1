@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using Layer1.WEB.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,14 @@ namespace Layer1.WEB
     {
         protected void Application_Start()
         {
+            //AutoFac
+            Bootstrapper.Run();
+
+            //AutoMapper
+            Mapper.Initialize(c => c.AddProfile<MappingProfile> ());
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
+         
         }
     }
 }

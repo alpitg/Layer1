@@ -1,4 +1,5 @@
-﻿using Layer1.VIEWMODEL;
+﻿using Layer1.ENTITIES;
+using Layer1.VIEWMODEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace Layer1.SERVICES.Abstract
 {
-    interface IStudentService
+    public interface IStudentService
     {
-        CStudentViewModel GetStudentById(int id);
+        CStudentViewModel GetStudentById(long id);
 
-        // List<CStudentViewModel> GetAllStudents(CStudentViewModel model);
+        List<CStudentViewModel> GetAllStudents(CStudentViewModel model);
+        
+        List<CStudent> GetAllStudentsWithoutParam();
 
         int AddStudent(CStudentViewModel addStudentModel);
 

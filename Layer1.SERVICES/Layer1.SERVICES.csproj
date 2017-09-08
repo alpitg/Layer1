@@ -50,6 +50,10 @@
     <Compile Include="Services\StudentService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Layer1.DATA\Layer1.DATA.csproj">
+      <Project>{BBCE904D-4AE5-4281-A164-D6DC37F1AAB8}</Project>
+      <Name>Layer1.DATA</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Layer1.ENTITIES\Layer1.ENTITIES.csproj">
       <Project>{CB87DB05-42D1-47F0-8D41-45F25917BE33}</Project>
       <Name>Layer1.ENTITIES</Name>

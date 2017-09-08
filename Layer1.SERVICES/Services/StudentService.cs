@@ -7,31 +7,74 @@ using System.Threading.Tasks;
 using Layer1.VIEWMODEL;
 using AutoMapper;
 using Layer1.ENTITIES;
+using Layer1.DATA.Repositories;
+using Layer1.DATA.Infrastructure;
 
 namespace Layer1.SERVICES.Services
 {
-    class StudentService : IStudentService
+    public class StudentService : IStudentService
     {
+
+
+
+        private readonly IEntityBaseRepository<CStudent> _StudentRepository;
+     
+        private readonly IUnitOfWork _unitOfWork;
+
+        public StudentService(
+          IEntityBaseRepository<CStudent> StudentRepository,
+          IUnitOfWork unitOfWork
+          )
+        {
+            _StudentRepository = StudentRepository;
+            _unitOfWork = unitOfWork;
+           
+        }
+
         public int AddStudent(CStudentViewModel addstudentmodel)
         {
-            var data = Mapper.Map<CStudentViewModel, CStudent>(addstudentmodel);
+            var studentData = Mapper.Map<CStudentViewModel, CStudent>(addstudentmodel);
+
+            _StudentRepository.Add(studentData);
+            _unitOfWork.Commit();
 
             return 1;
         }
 
-        public int DeleteStudent(long id)
+
+        public List<CStudent> GetAllStudentsWithoutParam()
         {
-            throw new NotImplementedException();
+            var studentdata = _StudentRepository.GetAll().ToList();
+            //var studentModelData = Mapper.Map<List<CStudent>, List<CStudentViewModel>>(studentdata);
+            //return studentModelData;
+            return studentdata;
         }
 
-        public CStudentViewModel GetStudentById(int id)
+
+        public List<CStudentViewModel> GetAllStudents(CStudentViewModel model)
         {
-            throw new NotImplementedException();
+            var studentdata = _StudentRepository.GetAll().ToList();
+
+            var studentModelData = Mapper.Map<List<CStudent>, List<CStudentViewModel>>(studentdata);
+           
+            return studentModelData;   
+        }
+
+        public CStudentViewModel GetStudentById(long id)
+        {
+            var studentByIdData = _StudentRepository.GetSingle(id);
+            var studentModelData = Mapper.Map<CStudent, CStudentViewModel>(studentByIdData);
+            return studentModelData;
         }
 
         public int UpdateStudent(long id, CStudentViewModel updateStudentModel)
         {
             throw new NotImplementedException();
         }
+        public int DeleteStudent(long id)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

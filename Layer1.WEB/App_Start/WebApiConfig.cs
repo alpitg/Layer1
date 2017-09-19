@@ -14,7 +14,10 @@ namespace Layer1.WEB
             // Web API configuration and services
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-  
+
+            // EnableCors
+            config.EnableCors();
+
 
             // Web API routes
             config.MapHttpAttributeRoutes();

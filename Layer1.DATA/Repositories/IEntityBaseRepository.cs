@@ -14,6 +14,12 @@ namespace Layer1.DATA.Repositories
         IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties);
         IQueryable<T> GetAll();
         T GetSingle(long id);
+
+
+        ////GetStudentByName for login
+        //T GetSingleByName(string name);
+
+
         IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
         IQueryable<T> FindByAll(Expression<Func<T, bool>> predicate);
         void Add(T entity);

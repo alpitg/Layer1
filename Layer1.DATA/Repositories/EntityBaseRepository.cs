@@ -39,6 +39,7 @@ namespace Layer1.DATA.Repositories
             return GetAll().FirstOrDefault(x => x.Id == id);
         }
 
+
         public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
             return cStudentContext.Set<T>().Where(predicate).Where(x => x.IsDeleted == false);
@@ -89,6 +90,10 @@ namespace Layer1.DATA.Repositories
             DbEntityEntry dbEntityEntry = cStudentContext.Entry(entity);
             dbEntityEntry.State = EntityState.Modified;
         }
+
+
+
+      
 
         #region Properties
 

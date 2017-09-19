@@ -1,4 +1,5 @@
 ﻿using Layer1.ENTITIES;
+using Layer1.ENTITIES.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,7 +19,13 @@ namespace Layer1.DATA
         {
             return base.SaveChanges();
         }
+
+
         public DbSet<CStudent> CStudents { get; set; }
+
+       // public DbSet<ClassMain> ClassMains { get; set; }
+        public DbSet<AddStudent> AddStudents { get; set; }
+        
 
     }
 }

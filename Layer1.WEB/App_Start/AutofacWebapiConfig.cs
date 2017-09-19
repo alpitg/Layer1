@@ -40,23 +40,17 @@ namespace Layer1.WEB.App_Start
             //Register your Web API controllers.  
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
-            ////DbContext
-            //builder.RegisterType<CStudent>()
-            //       .As<CStudentContext>()
-            //       .InstancePerRequest();
-
             // EF--> DbContext
             builder.RegisterType<CStudentContext>().As<DbContext>().SingleInstance();
 
-            //builder.Register(c => new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new CDCContext())))
-            //    .As<UserManager<ApplicationUser>>().SingleInstance();
-
-
-            //Service
+            //Service StudentService
             builder.RegisterType<StudentService>()
                    .As<IStudentService>()
                    .InstancePerRequest();
-
+            //Service AddStudentService
+            builder.RegisterType<AddStudentService>()
+                   .As<IAddStudentService>()
+                   .InstancePerRequest();
 
             //UnitOfWork
             builder.RegisterType<UnitOfWork>()
@@ -73,14 +67,10 @@ namespace Layer1.WEB.App_Start
                    .As(typeof(IEntityBaseRepository<>))
                    .InstancePerRequest();
 
-
-
-
-
-            builder.Register(context => context.Resolve<MapperConfiguration>()
-                  .CreateMapper(context.Resolve))
-                  .As<IMapper>()
-                  .InstancePerLifetimeScope();
+            //builder.Register(context => context.Resolve<MapperConfiguration>()
+            //      .CreateMapper(context.Resolve))
+            //      .As<IMapper>()
+            //      .InstancePerLifetimeScope();
 
             //Set the dependency resolver to be Autofac.  
             Container = builder.Build();

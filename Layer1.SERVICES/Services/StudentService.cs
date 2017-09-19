@@ -60,12 +60,24 @@ namespace Layer1.SERVICES.Services
             return studentModelData;   
         }
 
+
         public CStudentViewModel GetStudentById(long id)
         {
             var studentByIdData = _StudentRepository.GetSingle(id);
             var studentModelData = Mapper.Map<CStudent, CStudentViewModel>(studentByIdData);
             return studentModelData;
         }
+
+        
+
+
+        ////GetStudentByName for login
+        //public CStudentViewModel GetStudentByName(string name)
+        //{
+        //    var studentByIdData = _StudentRepository.GetSingle(name);
+        //    var studentModelData = Mapper.Map<CStudent, CStudentViewModel>(studentByIdData);
+        //    return studentModelData;
+        //}
 
         public int UpdateStudent(long id, CStudentViewModel updateStudentModel)
         {

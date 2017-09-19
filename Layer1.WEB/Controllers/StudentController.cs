@@ -1,7 +1,6 @@
-﻿using Layer1.ENTITIES;
+﻿using Layer1.ENTITIES.Model;
 using Layer1.SERVICES.Abstract;
-using Layer1.SERVICES.Services;
-using Layer1.VIEWMODEL;
+using Layer1.VIEWMODEL.StudentVM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,23 +12,24 @@ using System.Web.Http.Cors;
 namespace Layer1.WEB.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class HomeController : ApiController
+    public class StudentController : ApiController
     {
 
-        private readonly IStudentService _iStudentService;
 
-        public HomeController(IStudentService iStudentService)
+        private readonly IAddStudentService _iAddStudentService;
+
+        public StudentController(IAddStudentService iAddStudentService)
         {
-            _iStudentService = iStudentService;
+            _iAddStudentService = iAddStudentService;
         }
 
 
         // GET: api/Home
         [HttpGet]
-        [Route("api/Home/")]
+        [Route("api/Student/")]
         public IHttpActionResult GetAllStudent()
         {
-            var a = _iStudentService.GetAllStudentsWithoutParam();
+            var a = _iAddStudentService.GetAllStudentsWithoutParam();
 
             return Ok(a);
         }
@@ -37,29 +37,31 @@ namespace Layer1.WEB.Controllers
 
         // GET: api/Home/5
         [HttpGet]
-        [Route("api/Home/{id}")]
+        [Route("api/Student/{id}")]
         public IHttpActionResult GetById(long id)
         {
-            var a = _iStudentService.GetStudentById(id);
+            var a = _iAddStudentService.GetStudentById(id);
             return Ok(a);
         }
 
 
 
-
         // POST: api/Home
-        [Route("api/Home/")]
+        [Route("api/Student/")]
         [HttpPost]
-        public IHttpActionResult Post([FromBody] CStudentViewModel model)
+        public IHttpActionResult Post([FromBody] AddStudentViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-           var a=_iStudentService.AddStudent(model);
+            var a = _iAddStudentService.AddStudent(model);
 
             return Ok(a);
         }
+
+
+
     }
 }

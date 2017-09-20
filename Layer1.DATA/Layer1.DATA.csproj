@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201709200527231_DateTimeAdded1.Designer.cs">
       <DependentUpon>201709200527231_DateTimeAdded1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709200732307_PasswordToCStudent.cs" />
+    <Compile Include="Migrations\201709200732307_PasswordToCStudent.Designer.cs">
+      <DependentUpon>201709200732307_PasswordToCStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EntityBaseRepository.cs" />
@@ -78,6 +82,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201709200527231_DateTimeAdded1.resx">
       <DependentUpon>201709200527231_DateTimeAdded1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709200732307_PasswordToCStudent.resx">
+      <DependentUpon>201709200732307_PasswordToCStudent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

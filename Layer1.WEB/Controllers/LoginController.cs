@@ -25,39 +25,106 @@ namespace Layer1.WEB.Controllers
         }
 
 
+
+
+        //Alpit
         // GET: api/Login/
         [HttpPost]
         [Route("api/Login/")]
         public IHttpActionResult Login(CStudent loginDetails)
         {
-
-            var alluser = _iStudentService.GetAllStudentsWithoutParam();
-            var user = alluser.FirstOrDefault(a=>a.Name==loginDetails.Name);
-
-
-
-
-            if (loginDetails == null)
-                return Unauthorized();
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-
-            var tokenDescriptor = new SecurityTokenDescriptor
+            try
             {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(1),
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var tokenString = tokenHandler.WriteToken(token);
+                var alluser = _iStudentService.GetAllStudentsWithoutParam();
+                var user = alluser.FirstOrDefault(a => a.Name == loginDetails.Name);
 
-            // return basic user info (without password) and token to store client side
-            return Ok(tokenString);
+                if (user == null)
+                {
+                    return Unauthorized();
+                }
+
+                var pass = user.Password;
+
+                if (loginDetails.Password == pass)
+                {
+
+                    if (loginDetails == null)
+                        return Unauthorized();
+
+                    var tokenHandler = new JwtSecurityTokenHandler();
+
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim(ClaimTypes.Name, user.Id.ToString())
+                        }),
+                        Expires = DateTime.UtcNow.AddDays(1),
+                    };
+                    var token = tokenHandler.CreateToken(tokenDescriptor);
+                    var tokenString = tokenHandler.WriteToken(token);
+
+                    // return basic user info (without password) and token to store client side
+                    return Ok(tokenString);
+
+                }
+
+                else
+                {
+                    //var tokenMessage = "Username or password is wrong";
+                    return Unauthorized();
+                }
+            }
+            catch (InvalidCastException e)
+            {
+                return Ok(e);
+            }
 
 
         }
+
+
+
+
+
+
+
+
+        //ORIGINAL --->
+
+        //// GET: api/Login/
+        //[HttpPost]
+        //[Route("api/Login/")]
+        //public IHttpActionResult Login(CStudent loginDetails)
+        //{
+
+        //    var alluser = _iStudentService.GetAllStudentsWithoutParam();
+        //    var user = alluser.FirstOrDefault(a=>a.Name==loginDetails.Name);
+
+
+
+
+        //    if (loginDetails == null)
+        //        return Unauthorized();
+
+        //    var tokenHandler = new JwtSecurityTokenHandler();
+
+        //    var tokenDescriptor = new SecurityTokenDescriptor
+        //    {
+        //        Subject = new ClaimsIdentity(new Claim[]
+        //        {
+        //            new Claim(ClaimTypes.Name, user.Id.ToString())
+        //        }),
+        //        Expires = DateTime.UtcNow.AddDays(1),
+        //    };
+        //    var token = tokenHandler.CreateToken(tokenDescriptor);
+        //    var tokenString = tokenHandler.WriteToken(token);
+
+        //    // return basic user info (without password) and token to store client side
+        //    return Ok(tokenString);
+
+
+        //}
 
 
 

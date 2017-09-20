@@ -12,7 +12,7 @@ namespace Layer1.VIEWMODEL.StudentVM
         public long Id { get; set; }
         public string ChildFirstName { get; set; }
         public string ChildLastName { get; set; }
-        public string DOB { get; set; }
+        public DateTime DOB { get; set; }
 
         //ParentInfo
         public string ParentFatherName { get; set; }
@@ -37,8 +37,8 @@ namespace Layer1.VIEWMODEL.StudentVM
         //Enrollment Details
         public string Enrolledclass { get; set; }
         public string EnrolledRoom { get; set; }
-        public string EnrolledStartDate { get; set; }
-        public string EnrolledEndDate { get; set; }
+        public DateTime EnrolledStartDate { get; set; }
+        public DateTime EnrolledEndDate { get; set; }
 
         //Additional 
         public string AdditionalDetails { get; set; }

@@ -48,6 +48,7 @@ namespace Layer1.WEB.Controllers
 
 
         // POST: api/Home
+       // [Authorize]
         [Route("api/Home/")]
         [HttpPost]
         public IHttpActionResult Post([FromBody] CStudentViewModel model)

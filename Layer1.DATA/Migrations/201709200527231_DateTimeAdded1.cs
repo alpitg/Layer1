@@ -3,7 +3,7 @@ namespace Layer1.DATA.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial2 : DbMigration
+    public partial class DateTimeAdded1 : DbMigration
     {
         public override void Up()
         {
@@ -14,7 +14,7 @@ namespace Layer1.DATA.Migrations
                         Id = c.Long(nullable: false, identity: true),
                         ChildFirstName = c.String(),
                         ChildLastName = c.String(),
-                        DOB = c.String(),
+                        DOB = c.DateTime(nullable: false),
                         ParentFatherName = c.String(),
                         ParentMotherName = c.String(),
                         ParentMobile = c.String(),
@@ -31,9 +31,21 @@ namespace Layer1.DATA.Migrations
                         PostalCode = c.Int(nullable: false),
                         Enrolledclass = c.String(),
                         EnrolledRoom = c.String(),
-                        EnrolledStartDate = c.String(),
-                        EnrolledEndDate = c.String(),
+                        EnrolledStartDate = c.DateTime(nullable: false),
+                        EnrolledEndDate = c.DateTime(nullable: false),
                         AdditionalDetails = c.String(),
+                        IsDeleted = c.Boolean(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.CStudents",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        Name = c.String(),
+                        Email = c.String(),
+                        Age = c.Int(nullable: false),
                         IsDeleted = c.Boolean(),
                     })
                 .PrimaryKey(t => t.Id);
@@ -42,6 +54,7 @@ namespace Layer1.DATA.Migrations
         
         public override void Down()
         {
+            DropTable("dbo.CStudents");
             DropTable("dbo.AddStudents");
         }
     }

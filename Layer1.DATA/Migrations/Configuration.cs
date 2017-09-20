@@ -1,6 +1,5 @@
 namespace Layer1.DATA.Migrations
 {
-    using ENTITIES;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -20,11 +19,13 @@ namespace Layer1.DATA.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //context.CStudents.AddOrUpdate(
-            //  p => p.Id,
-            //  new CStudent { Id=1, Name="Alpit", Email="alpit@gmail.com", Age=23, IsDeleted=false }
-            //);
-
+            //    context.People.AddOrUpdate(
+            //      p => p.FullName,
+            //      new Person { FullName = "Andrew Peters" },
+            //      new Person { FullName = "Brice Lambson" },
+            //      new Person { FullName = "Rowan Miller" }
+            //    );
+            //
         }
     }
 }

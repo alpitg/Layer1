@@ -56,17 +56,9 @@
     <Compile Include="Infrastructure\IDbFactory.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201709080645284_Initial1.cs" />
-    <Compile Include="Migrations\201709080645284_Initial1.Designer.cs">
-      <DependentUpon>201709080645284_Initial1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709130632179_Initial2.cs" />
-    <Compile Include="Migrations\201709130632179_Initial2.Designer.cs">
-      <DependentUpon>201709130632179_Initial2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709130822566_Initial21.cs" />
-    <Compile Include="Migrations\201709130822566_Initial21.Designer.cs">
-      <DependentUpon>201709130822566_Initial21.cs</DependentUpon>
+    <Compile Include="Migrations\201709200527231_DateTimeAdded1.cs" />
+    <Compile Include="Migrations\201709200527231_DateTimeAdded1.Designer.cs">
+      <DependentUpon>201709200527231_DateTimeAdded1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,14 +76,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709080645284_Initial1.resx">
-      <DependentUpon>201709080645284_Initial1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709130632179_Initial2.resx">
-      <DependentUpon>201709130632179_Initial2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709130822566_Initial21.resx">
-      <DependentUpon>201709130822566_Initial21.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709200527231_DateTimeAdded1.resx">
+      <DependentUpon>201709200527231_DateTimeAdded1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
